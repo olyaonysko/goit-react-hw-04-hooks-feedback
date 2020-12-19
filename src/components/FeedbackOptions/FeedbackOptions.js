@@ -4,14 +4,14 @@ import Section from '../Section';
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <Section title={'Please leave feedback'}>
-      {options.map(feedback => (
+      {Object.keys(options).map(key => (
         <button
           type="button"
-          key={feedback}
-          name={feedback}
-          onClick={() => onLeaveFeedback(feedback)}
+          key={key}
+          name={key}
+          onClick={() => onLeaveFeedback(key)}
         >
-          {feedback}
+          {key}
         </button>
       ))}
     </Section>
@@ -19,7 +19,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  options: PropTypes.object.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
 
